@@ -61,6 +61,28 @@ ggplot(
   ylab("Salary Value") + 
   ggtitle("Independence of Observations / Blocked by Year")
 
+# INTERACTION
+ggplot2::ggplot(
+  data = data,
+  mapping = aes(
+    x = College,
+    y = Value,
+    color = Year,
+    shape = Year,
+    linetype = Year,
+    group = Year
+  )
+) +
+  stat_summary(fun = "mean", geom = "point") +
+  stat_summary(fun = "mean", geom = "line") +
+  ggplot2::theme_bw() +
+  xlab("College/Univeristy") +
+  ylab("Salary Value (USD)") +
+  labs(color = "Year") +
+  theme(
+    legend.position = "right"
+    )
+
 # ----------------------------------------------------------
 
 # PARAMETRIC ----------------------------------------

@@ -1,0 +1,47 @@
+ggplot(finalfinaldata, aes(x=Value)) + geom_histogram()
+
+ggplot(finalfinaldata, aes(x=College, y=Value)) + 
+  geom_boxplot(outlier.colour="red", outlier.shape=8,
+               outlier.size=3) + theme(axis.text.x = element_text(size = 7.5))
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/shadowgram.R")
+shadowgram(
+  dataVec = finalfinaldata$Value,
+  label = "Value",
+  layers = 50,
+  color = "navy",
+  aStep = 4
+)
+
+scoreStats <- psych::describeBy(
+  x = finalfinaldata$Value,
+  group = finalfinaldata$College,
+  na.rm = TRUE,
+  skew = TRUE,
+  ranges = TRUE,
+  quant = c(0.25, 0.75),
+  IQR = FALSE,
+  mat = TRUE,
+  digits = 4
+)
+
+scoreStats %>%
+  tibble::remove_rownames() %>%
+  tibble::column_to_rownames(
+    var = "group1"
+  ) %>%
+  dplyr::select(
+    n, min, Q0.25, median, Q0.75, max, mad, mean, sd, skew, kurtosis
+  ) %>%
+  knitr::kable(
+    caption = "Summary Statistics for Draftee Contracts",
+    digits = 3,
+    format.args = list(big.mark = ","),
+    align = rep('c', 11),
+    col.names = c("n", "Min", "Q1", "Median", "Q3", "Max", "MAD", "SAM", "SASD",
+                  "Sample Skew", "Sample Ex. Kurtosis"),
+    booktabs = TRUE
+  )  %>%
+  kableExtra::kable_styling(
+    font_size = 12,
+    latex_options = c("scale_down", "HOLD_position")
+  )

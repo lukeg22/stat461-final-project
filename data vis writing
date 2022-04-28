@@ -1,0 +1,4 @@
+This histogram is heavily skewed to the right, with most of the data clustered towards lower values.
+The shadowgram shows a lot of the same things that the histogram does, also being extremely skewed to the right.
+The boxplots show that the quartiles, ranges, and medians for most of the colleges is very similar. But, Alabama and Clemson have a much greater range and median than the rest of the schools.
+The descriptive stats back up the boxplots, in that Alabama and Clemson have the greatest ranges and medians. They also have the greatest two sample arithmetic means, and those two values are much greater than every other school's SAM.'

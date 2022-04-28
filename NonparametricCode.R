@@ -14,11 +14,21 @@ library(psych)
 library(dplyr)
 library(DescTools)
 
+options(knitr.kable.NA = "")
+options(contrasts = c("contr.sum", "contr.poly"))
+
+source("https://raw.github.com/neilhatfield/STAT461/master/rScripts/ANOVATools.R")
+
 data <- read.csv("RandomizedFinalSD.csv", header = TRUE)
 
 data$Year <- as.factor(data$Year)
 data$College <- as.factor(data$College)
 data$index <- 1:nrow(data)
+
+model <- aov(
+  formula = Value ~ College + Year,
+  data = data
+)
 
 # NONPARAMETRIC SHORTCUT
 
@@ -57,7 +67,32 @@ EffectSize <- rcompanion::epsilonSquared(
 
 EffectSize
 
+# BLOCK EFFICIENCY
+block.RelEff(
+  aov.obj = model,
+  blockName = "Year",
+  trtName = "College"
+)
 
+# POINT ESTIMATES
+pEst <- dummy.coef(model)
+pEst <- unlist(pEst)
+names(pEst) <- c(
+  "Grand Mean",
+  levels(data$Year),
+  levels(data$College)
+)
+data.frame("Estimate" = pEst) %>%
+  knitr::kable(
+    digits = 3,
+    caption = "Point Estimates from NFL Rookie Salary Study",
+    booktabs = TRUE,
+    align = "c"
+  ) %>%
+  kableExtra::kable_styling(
+    font_size = 12,
+    latex_options = c("HOLD_position")
+  )
 
 
 

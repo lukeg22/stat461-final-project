@@ -14,6 +14,7 @@ library(psych)
 library(dplyr)
 library(DescTools)
 library(rstatix)
+library(emmeans)
 
 options(knitr.kable.NA = "")
 options(contrasts = c("contr.sum", "contr.poly"))
@@ -173,6 +174,121 @@ ggplot(
     shape = "Potential Outlier"
   )
 
+
+parameters::model_parameters(
+  model = model,
+  omega_squared = "partial",
+  eta_squared = "partial",
+  epsilon_squared = "partial"
+) %>%
+  dplyr::mutate( 
+    Parameter = dplyr::case_when(
+      Parameter == "Value" ~ "Salary Value (USD)",
+      Parameter == "College" ~ "College",
+      TRUE ~ Parameter
+    )
+  ) %>%
+  dplyr::mutate(
+    p = ifelse(
+      test = is.na(p),
+      yes = NA,
+      no = pvalRound(p)
+    )
+  ) %>%
+  knitr::kable(
+    digits = 4,
+    col.names = c("Source", "SS", "df", "MS", "F", "p-value",
+                  "Partial Omega Sq.", "Partial Eta Sq.", "Partial Epsilon Sq."),
+    caption = "ANOVA Table for NFL Rookie Salary Study",
+    align = c('l',rep('c',8)),
+    booktab = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    font_size = 12,
+    latex_options = c("scale_down", "HOLD_position")
+  )
+
+rawPointEst <- dummy.coef(model)
+rawPointEst <- unlist(rawPointEst)
+names(rawPointEst) <- c(
+  "Grand Mean",
+  "College",
+  paste("College", levels(data$College))
+)
+data.frame("Estimate" = rawPointEst) %>%
+  knitr::kable(
+    digits = 2,
+    caption = "Unadjusted Point Estimates from the NFL Rookie Salary Study",
+    booktabs = TRUE,
+    align = "c"
+  ) %>%
+  kableExtra::kable_styling(
+    font_size = 12,
+    latex_options = c("HOLD_position")
+  )
+
+emmOutKey <- emmeans::emmeans(
+  object = model,
+  specs = pairwise ~ College,
+  adjust = "tukey",
+  level = 0.85
+)
+
+as.data.frame(emmOutKey$emmeans) %>%
+  knitr::kable(
+    digits = 4,
+    col.names = c("College", "Marginal Mean","SE", "DF",
+                  "Lower Bound","Upper Bound"),
+    caption = "Marginal Means-Tukey 85\\% Adjustment",
+    align = c("l", rep("c", 5)),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    font_size = 12,
+    latex_options = c("HOLD_position")
+  )
+
+as.data.frame(emmOutKey$contrasts) %>%
+  knitr::kable(
+    digits = 4,
+    col.names = c("Comparison", "Difference","SE", "DF",
+                  "t Statistic","p-value"),
+    caption = "Marginal Means-Tukey 85\\% Adjustment",
+    align = c("l", rep("c", 5)),
+    booktabs = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    font_size = 12,
+    latex_options = c("HOLD_position")
+  )
+
+as.data.frame(
+  eff_size(
+    object = emmOutKey,
+    sigma = sigma(model),
+    edf = df.residual(model)
+  )
+) %>%
+  dplyr::mutate(
+    ps = probSup(effect.size),
+    .after = effect.size
+  ) %>%
+  dplyr::select(contrast, effect.size, ps) %>%
+  knitr::kable(
+    digits = 3,
+    col.names = c("College Comparison", "Cohen's d", "Probability of Superiority"),
+    align = "lccc",
+    caption = "Effect Sizes for each College",
+    booktab = TRUE
+  ) %>%
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "condensed"),
+    font_size = 12,
+    latex_options = "HOLD_position"
+  )
 
 
 

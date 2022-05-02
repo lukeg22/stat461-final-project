@@ -291,5 +291,5 @@ as.data.frame(
   )
 
 
-
+{r caption="Data frame is now printed using `kable`.",render=lemon_print}
 

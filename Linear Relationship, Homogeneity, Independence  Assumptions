@@ -1,0 +1,10 @@
+Homogeneity of Slopes Assumption
+To assess the homogeneity of slopes, we will create and check a plot. This assumes the rate of change for the response with respect to the covariate is unchanging regarding the factors and blocks. Since we are fitting a linear model, we are looking for identical constant rates of change for each level of our factor. When examining our plot, we determine the assumption for the homogeneity of the slopes is satisfied. 
+
+
+Linear Relationship Assumption 
+When assessing the linear relationship assumption, we are looking for a linear relationship between the response variable of Salary Value and the covariate of draft selection order. We are checking to see if our points are consistent with our line of best fit as much as possible, indicating we are close to a constant rate of change. When assessing our scatter plot, we determine that the linear relationship assumption is satisfied.
+
+
+Independence of observations
+When assessing our independence of observations assumption, we created an index plot to see if it was satisfied. When examining the plot we are looking for any clear indications of a pattern in our data. We do not see any pattern in our index plot, indicating that we have independence of observations. We also know the measurement order of observations, which favors the assumption of the independence of observations. 

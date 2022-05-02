@@ -211,11 +211,30 @@ parameters::model_parameters(
 
 rawPointEst <- dummy.coef(model)
 rawPointEst <- unlist(rawPointEst)
+
+
 names(rawPointEst) <- c(
   "Grand Mean",
-  "College",
-  paste("College", levels(data$College))
+  "Alabama", 
+  "Auburn", 
+  "Clemson", 
+  "Florida", 
+  "Georgia", 
+  "Iowa", 
+  "Miami (FL)", 
+  "Michigan", 
+  "Notre Dame", 
+  "Ohio St.", 
+  "Oklahoma", 
+  "Oregon", 
+  "Penn St.", 
+  "2019", 
+  "2020", 
+  "2021", 
+  "Pick"
 )
+
+
 data.frame("Estimate" = rawPointEst) %>%
   knitr::kable(
     digits = 2,

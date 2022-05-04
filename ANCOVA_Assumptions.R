@@ -335,3 +335,17 @@ The authors of this report would like to acknowledge their individual contributi
 + Luke Geier contributed to the design of the study, collection of data, analysis of data, and writing of the report.
 + Marquis Gee contributed to the design of the study, collection of data, analysis of data, and writing of the report.
 
+# ANOVA Model
+
+# F
+The College of a specific NFL rookie accounts for about XX times as much variation in total rookie salary value (USD) as our residuals, even when we account for the year the rookie was drafted and the order in which they were selected. 
+
+# P-value
+Under the null hypothesis that College has no impact on NFL rookie salary value (USD), we would only anticipate such a result XX% of the time (p = XX). 
+
+# Omega Squared for Year
+The Year that an NFL rookie is drafted accounts for a XX of the variation in NFL rookie salary value (USD) with around XX%.
+
+
+
+

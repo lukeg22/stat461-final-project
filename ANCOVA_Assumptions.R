@@ -349,4 +349,23 @@ The Year that an NFL rookie is drafted accounts for a XX of the variation in NFL
 # Point Estimates
 After accounting for the impact of the year an NFL rookie was drafted, as well as the order in which they were selected, our group of NFL rookies who were selected out of XX accumulated XX (more or less) NFL rookie salary value (USD) per rookie beyond the general baseline expectations.
 
+# Effect Sizes 
+
+# Cohen's d
+NFL Rookies that were selected from XX have NFL rookie salary values (USD) that are XX standard deviations (higher/lower) than NFL rookies who were selected from XX.
+
+# Hedge's g
+NFL Rookies that were selected from XX have NFL rookie salary values (USD) that are XX standard deviations (higher/lower) than NFL rookies who were selected from XX.
+
+# Probability of Superiority
+If we were to run two lotteries to select an NFL rookie from XX1 and another NFL rookie from XX2, our XX1 rookie will have a higher NFL rookie salary value XX% of the time.
+
+# Pairwise Comparisons
+
+# Hodges Lehmann
+Half of all pairwise comparisons between NFL rookies selected from XX1 and NFL rookies selected from XX2 have a difference of XX total NFL rookie salary value, in USD.
+
+
+
+
 

@@ -1,0 +1,17 @@
+Homogeneity of Slopes Assumption 
+To assess the homogeneity of slopes, we will create and check a plot. This assumes the rate of change for Salary value(log10)  with respect to college is unchanging regarding the factors and blocks. Since we are fitting a linear model, we are looking for identical constant rates of change for each level of selection order. When examining our plot, we determine the assumption for the homogeneity of the slopes is satisfied.
+
+Linear Relationship Assumption 
+When assessing the linear relationship assumption, we are looking for a linear relationship between the response variable of Salary Value and the covariate of draft selection order. We are checking to see if our points are consistent with our line of best fit as much as possible, indicating we are close to a constant rate of change. When assessing our scatter plot, we determine that the linear relationship assumption is satisfied.
+
+Independence of observations
+When assessing our independence of observations assumption, we created an index plot to see if it was satisfied. When examining the plot we are looking for any clear indications of a pattern in our data. We do not see any pattern in our index plot, indicating that we have independence of observations. We also know the measurement order of observations, which favors the assumption of the independence of observations.  
+
+Gaussian Distribution
+To check if our residuals follow a gaussian distribution, we created a qqplot. Using the qqplot, we are examining how many observation residuals fall within our envelope. The more points within the envelope, the closer you are to satisfying the assumption. We have 4/117 points outside of the envelope. This gives us a value of .034 points outside of our envelope, which is lower than our Unusualness threshold and Type 1 error set at .15. 
+
+Homoscedasticity
+For the assumption of Homoscedasticity we are examining a strip plot with the residuals of Salary value(log 10) on the x axis, and the fitted values of salary value(log 10) on the y axis. When examining the strip plot, we are focused on the solid blue line that runs horizontal across the plot. The straighter the horizontal line, the better we meet the assumption of homoscedasticity. Since our line has a deep curve and is not perfectly straight, we have to proceed with caution. We examined the points on our plot and since they do not follow a clear pattern, we relaxed our caution a little bit and determined this assumption satisfied.
+
+Checking for potential Outliers
+When checking for potential outliers, we are first examining a boxplot to determine our univariate outliers. With our univariate outliers, they are only outliers considering one variable. We examined the Salary value(log 10) outliers, with our univariate outlier check. We then moved on to check our multivariate outliers. With our multivariate outliers we are checking for outliers while considering all of our variables. Our multivariate plot shows us to have 3 potential outliers. 

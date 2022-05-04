@@ -346,6 +346,7 @@ Under the null hypothesis that College has no impact on NFL rookie salary value 
 # Omega Squared for Year
 The Year that an NFL rookie is drafted accounts for a XX of the variation in NFL rookie salary value (USD) with around XX%.
 
-
+# Point Estimates
+After accounting for the impact of the year an NFL rookie was drafted, as well as the order in which they were selected, our group of NFL rookies who were selected out of XX accumulated XX (more or less) NFL rookie salary value (USD) per rookie beyond the general baseline expectations.
 
 
